@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140203"/><stop offset="50%" stop-color="#080808"/><stop offset="100%" stop-color="#1f0305"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff1722"/><stop offset="100%" stop-color="#b0000a"/>
+    </linearGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,23,34,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="480" fill="url(#bg)"/>
+  <rect width="400" height="480" fill="url(#grid)"/>
+  <circle cx="200" cy="180" r="110" fill="none" stroke="rgba(255,23,34,0.15)" stroke-width="2" stroke-dasharray="6,6"/>
+  <circle cx="200" cy="180" r="85" fill="#111" stroke="url(#red)" stroke-width="3"/>
+  <!-- Code Terminal Icon -->
+  <g transform="translate(200, 180)">
+    <rect x="-48" y="-36" width="96" height="72" rx="8" fill="#151515" stroke="#ff1722" stroke-width="3"/>
+    <path d="M -30 -12 L -18 0 L -30 12" fill="none" stroke="#ff1722" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="-10" y1="12" x2="25" y2="12" stroke="#ff1722" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="15" cy="-20" r="3" fill="#ff1722"/>
+    <circle cx="25" cy="-20" r="3" fill="#666"/>
+    <circle cx="35" cy="-20" r="3" fill="#666"/>
+  </g>
+  <path d="M 20 50 L 20 20 L 50 20 M 350 20 L 380 20 L 380 50 M 380 430 L 380 460 L 350 460 M 50 460 L 20 460 L 20 430" fill="none" stroke="#ff1722" stroke-width="2"/>
+  <text x="200" y="360" fill="#fff" font-family="'Courier New', monospace" font-weight="900" font-size="18" text-anchor="middle" letter-spacing="3">DIBAAN SB</text>
+  <text x="200" y="390" fill="#ff1722" font-family="'Courier New', monospace" font-size="12" text-anchor="middle" letter-spacing="3">PROGRAMMING LEAD // TC-04</text>
+  <text x="200" y="425" fill="#666" font-family="sans-serif" font-size="11" text-anchor="middle">DROP YOUR PHOTO HERE</text>
+</svg>

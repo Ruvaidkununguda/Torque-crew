@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+<defs><linearGradient id="r" x1="0" x2="1"><stop stop-color="#ff111d"/><stop offset="1" stop-color="#700008"/></linearGradient></defs>
+<rect width="800" height="520" rx="32" fill="#080808"/><g fill="none" stroke="#ff1b27" opacity=".18"><path d="M0 420h800M80 0v520M160 0v520M240 0v520M320 0v520M400 0v520M480 0v520M560 0v520M640 0v520M720 0v520"/></g>
+<g stroke="#ff1722" stroke-width="10" stroke-linejoin="round"><path fill="#111" d="M255 160h290v170H255z"/><path fill="url(#r)" d="M300 100h200l35 60H265z"/><circle cx="330" cy="220" r="28" fill="#050505"/><circle cx="470" cy="220" r="28" fill="#050505"/><path d="M330 275h140"/><path d="M255 205 165 275v110M545 205l90 70v110M205 385h-80M595 385h80"/></g>
+<text x="40" y="65" fill="#777" font-family="Arial" font-size="18" letter-spacing="5">TORQUE CREW // ROBOT LAB</text></svg>

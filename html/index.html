@@ -1,0 +1,1043 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#070707">
+    <meta name="description"
+        content="Torque Crew — HyperDrive Robotics Team. Elite engineering, autonomous algorithms, and championship drive. One Crew. One Drive. One Goal.">
+    <title>TORQUE CREW // HYPERDRIVE ROBOTICS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Audio Context Warp Flash Effect -->
+    <div id="warp-flash"></div>
+
+    <!-- Noise and animated background elements -->
+    <canvas id="star-canvas"></canvas>
+    <div class="noise"></div>
+    <div class="grid"></div>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="glow" id="glow"></div>
+
+    <!-- ==========================================================================
+     CINEMATIC VIDEO INTRO GATE (BEFORE LANDING PAGE)
+     ========================================================================== -->
+    <div id="intro-gate">
+        <!-- Video Stage -->
+        <div class="video-stage">
+            <video id="intro-vid" playsinline muted autoplay preload="auto">
+                <source src="../assets/intro-video.mp4" type="video/mp4">
+                <source src="WhatsApp Video 2026-09-10 at 7.24.59 PM.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <div class="video-vignette"></div>
+            <div class="scanline"></div>
+        </div>
+
+        <!-- Top Telemetry Bar -->
+        <div class="gate-hud-top">
+            <div class="gate-telemetry">
+                <div class="live-pulse"></div>
+                <span>TORQUE CREW // SYS_INIT [v2.6]</span>
+                <span style="color: #666;">•</span>
+                <span style="color: var(--red);">HYPERDRIVE ACTIVE</span>
+            </div>
+            <div class="gate-ctrls">
+                <button class="gate-icon-btn" id="sound-btn" title="Toggle Intro Audio">
+                    <div class="sound-bars muted" id="gate-sound-bars">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <span id="sound-label">UNMUTE</span>
+                </button>
+                <button class="gate-icon-btn" id="skip-top-btn" title="Skip Intro">
+                    SKIP <span>✕</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Launch Telemetry & Hyperdrive Button -->
+        <div class="gate-hud-bottom">
+            <div class="gate-progress-wrap">
+                <span id="time-current">00:00</span>
+                <div class="gate-progress-bar" id="gate-progress-bar">
+                    <div class="gate-progress-fill" id="gate-progress-fill"></div>
+                </div>
+                <span id="time-total">--:--</span>
+            </div>
+
+            <div class="gate-actions-row">
+                <div class="gate-hint">
+                    PRESS <kbd>SPACE</kbd> OR <kbd>ESC</kbd> TO ENTER • AUTOPLAY ENGAGED
+                </div>
+                <button class="enter-hyperdrive-btn" id="enter-site-btn">
+                    <span>ENTER HYPERDRIVE</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+     MAIN SITE NAVIGATION
+     ========================================================================== -->
+    <nav>
+        <a class="brand" href="#start">
+            <img src="../assets/torque-icon.jpg" alt="Torque Crew Icon">
+            <span>TORQUE <b>CREW</b></span>
+        </a>
+
+        <div class="nav-center">
+            <a href="#about">ABOUT</a>
+            <a href="#team" class="meet-the-crew-btn">MEET THE CREW</a>
+            <a href="#builds">BUILDS</a>
+            <a href="#specs">TECH SPECS</a>
+            <a href="#journey">JOURNEY</a>
+        </div>
+
+        <div class="nav-right">
+            <a class="nav-social-btn insta"
+                href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                target="_blank" rel="noopener" title="Follow Torque Crew on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>INSTA</span>
+            </a>
+            <a class="nav-social-btn yt" href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank"
+                rel="noopener" title="Subscribe to Torque Crew on YouTube">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                    </path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+                <span>YOUTUBE</span>
+            </a>
+            <button class="nav-action-btn" id="replay-intro-btn" title="Replay Intro Video">
+                <span>&#9654;</span> REPLAY
+            </button>
+            <button class="nav-action-btn" id="sfx-toggle-btn" title="Toggle Futuristic SFX Audio">
+                <span id="sfx-icon">🔊</span> SFX: <b id="sfx-status" style="color:var(--red);">ON</b>
+            </button>
+            <a class="nav-action-btn navcta meet-the-crew-btn" href="#team">MEET THE CREW &rarr;</a>
+        </div>
+
+        <!-- Mobile Navigation Controls -->
+        <div class="nav-mobile-actions">
+            <button class="nav-action-btn sfx-btn-compact" id="sfx-toggle-btn-mobile" title="Toggle SFX">
+                <span id="sfx-icon-mobile">🔊</span>
+            </button>
+            <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Open Navigation Menu"
+                aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer & Backdrop -->
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-brand">
+                <img src="../assets/torque-icon.jpg" alt="Torque Crew Icon">
+                <span>TORQUE <b>CREW</b></span>
+            </div>
+            <button class="drawer-close-btn" id="mobile-nav-close" aria-label="Close Menu">✕</button>
+        </div>
+        <div class="drawer-kicker">NAVIGATION // HYPERDRIVE</div>
+        <div class="drawer-links">
+            <a href="#about" class="drawer-link"><span>01</span> ABOUT US</a>
+            <a href="#team" class="drawer-link meet-the-crew-btn"><span>02</span> MEET THE CREW</a>
+            <a href="#builds" class="drawer-link"><span>03</span> BUILDS &amp; CHASSIS</a>
+            <a href="#specs" class="drawer-link"><span>04</span> TECH SPECS</a>
+            <a href="#simulator" class="drawer-link"><span>05</span> MATCH SIMULATOR</a>
+            <a href="#journey" class="drawer-link"><span>06</span> JOURNEY</a>
+        </div>
+        <div class="drawer-actions">
+            <button class="drawer-action-btn" id="drawer-replay-btn">
+                <span>▶</span> REPLAY INTRO VIDEO
+            </button>
+            <button class="drawer-action-btn" id="drawer-sfx-btn">
+                <span id="drawer-sfx-icon">🔊</span> SFX AUDIO: <b id="drawer-sfx-status"
+                    style="color:var(--red);">ON</b>
+            </button>
+        </div>
+        <div class="drawer-footer">
+            <div class="drawer-socials">
+                <a href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                    target="_blank" rel="noopener" class="drawer-social-btn insta" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>INSTAGRAM</span>
+                </a>
+                <a href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank" rel="noopener"
+                    class="drawer-social-btn yt" title="YouTube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                    <span>YOUTUBE</span>
+                </a>
+            </div>
+            <div class="drawer-tagline">ONE CREW. ONE DRIVE. ONE GOAL.</div>
+        </div>
+    </aside>
+    <!-- ==========================================================================
+     HERO SECTION (WITH 3D ROTATING LOGO ANIMATION)
+     ========================================================================== -->
+    <section class="hero" id="start">
+        <div class="hero-inner" id="hero">
+            <div class="hero-copy">
+                <div class="tag">
+                    <i></i> HYPERDRIVE COMPETITIVE ROBOTICS
+                </div>
+                <h1 class="scramble-title">ONE CREW.<br><span class="red">ONE DRIVE.</span><br>ONE GOAL.</h1>
+                <p class="sub">
+                    We engineer, program, drive, and conquer. Torque Crew transforms raw aluminum, high-torque brushless
+                    drive, and autonomous intelligence into a championship-grade machine.
+                </p>
+                <div class="hero-buttons">
+                    <a class="cta meet-the-crew-btn" href="#team">MEET THE CREW <span>&rarr;</span></a>
+                    <a class="cta-outline" href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank"
+                        rel="noopener">WATCH ON YOUTUBE <span style="color:var(--red);">&#9654;</span></a>
+                </div>
+            </div>
+
+            <!-- 3D Stage with Animated Rotating Logo Emblem -->
+            <div class="robot-stage">
+                <div class="hud">
+                    <span class="tl">SYS // ONLINE</span>
+                    <span class="tr">TC-01 SWERVE</span>
+                    <span class="bl">HYPERDRIVE</span>
+                    <span class="br">2026 // READY</span>
+                </div>
+                <!-- 3D Holographic Base Pedestal -->
+                <div class="core-pedestal">
+                    <div class="pedestal-ring pr1"></div>
+                    <div class="pedestal-ring pr2"></div>
+                    <div class="pedestal-emitter"></div>
+                </div>
+
+                <!-- Vertical 3D Rotating Logo (Pure Logo, No Card / No Background) -->
+                <div class="vertical-logo-rotator" id="interactive-logo-disc"
+                    title="Torque Crew Logo // Vertical 3D Rotation (Click to speed up)">
+                    <div class="vertical-logo-card">
+                        <div class="logo-side logo-front">
+                            <img class="core-logo-img" src="../assets/torque-logo-transparent.png"
+                                alt="Torque Crew Logo">
+                        </div>
+                        <div class="logo-side logo-back">
+                            <img class="core-logo-img" src="../assets/torque-logo-transparent.png"
+                                alt="Torque Crew Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+     SECTION 01: ABOUT US & ORIGIN STORY
+     ========================================================================== -->
+    <section class="section" id="about">
+        <div class="wrap">
+            <div class="head reveal">
+                <div>
+                    <div class="kicker">01 // ORIGIN &amp; MISSION</div>
+                    <h2>Forged in the Lab.<br><span class="red">Proven in the Arena.</span></h2>
+                </div>
+                <p>
+                    Torque Crew is an independent competitive robotics team engineered to push beyond conventional
+                    limits. When the countdown starts, our alliance delivers.
+                </p>
+            </div>
+
+            <!-- About Content Grid -->
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <h3>ENGINEERING WITH NO COMPROMISE</h3>
+                    <p>
+                        Founded on the principle of relentless engineering, Torque Crew was created to bridge high-level
+                        robotics theory with aggressive, real-world match performance. In HyperDrive, matches are won in
+                        milliseconds. We optimize every gram of weight, every line of computer vision code, and every
+                        driver reflex.
+                    </p>
+                    <p>
+                        From rapid-prototyping in our CNC workshop to custom PCB routing and sensor fusion, every
+                        mechanism on our machine is designed for speed, torque, and survivability under competition
+                        collision.
+                    </p>
+                    <div class="about-quote">
+                        "We don't build robots to participate. We build machines that redefine how HyperDrive matches
+                        are played."
+                    </div>
+                </div>
+
+                <div class="pillars reveal">
+                    <div class="pillar-card">
+                        <div class="pillar-num">01 // MECHANICAL</div>
+                        <h4>Precision CNC &amp; Swerve</h4>
+                        <p>Billet 6061-T6 aluminum plates, carbon fiber framing, and high-traction omnidirectional
+                            drive.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-num">02 // AUTONOMOUS</div>
+                        <h4>Neural Vision &amp; Odometry</h4>
+                        <p>Real-time AprilTag fiducial tracking at 90 FPS with Kalman-filtered sub-centimeter field
+                            positioning.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-num">03 // STRATEGY</div>
+                        <h4>Alliance Coordination</h4>
+                        <p>Tactical scouting databases, adaptive match pathing, and rapid 6-minute pit-stop turnaround.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-num">04 // OUTREACH</div>
+                        <h4>STEM Mentorship</h4>
+                        <p>Open-source CAD repositories, robotics workshops, and community engineering showcases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animated Milestones -->
+            <div class="milestones-bar reveal">
+                <div class="milestone-item">
+                    <div class="milestone-num counter" data-target="14">0</div>
+                    <div class="milestone-label">Championship Awards</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-num counter" data-target="1200">0</div>
+                    <div class="milestone-label">Workshop Hours Logged</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-num">2:30</div>
+                    <div class="milestone-label">Relentless Match Protocol</div>
+                </div>
+                <div class="milestone-item">
+                    <div class="milestone-num counter" data-target="99">0</div>
+                    <div class="milestone-label">% Subsystem Reliability</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+     SECTION 02: TEAM & CREW ROSTER (ALL 8 TEAM MEMBERS)
+     ========================================================================== -->
+    <section class="section" id="team">
+        <div class="wrap">
+            <div class="head reveal">
+                <div>
+                    <div class="kicker">02 // THE ROSTER</div>
+                    <h2>The Minds Behind<br><span class="red">The Machine.</span></h2>
+                </div>
+                <p>
+                    A great robot is nothing without an elite crew. Meet the captains, engineers, coders, strategists,
+                    and storytellers powering Torque Crew.
+                </p>
+            </div>
+
+            <!-- Filter & Photo Tool Bar -->
+            <div class="team-filter-bar reveal">
+                <div class="filter-btns">
+                    <button class="filter-btn active" data-filter="all">ALL CREW (9)</button>
+                    <button class="filter-btn" data-filter="leadership">LEADERSHIP</button>
+                    <button class="filter-btn" data-filter="engineering">ENGINEERING</button>
+                    <button class="filter-btn" data-filter="software">SOFTWARE &amp; AI</button>
+                    <button class="filter-btn" data-filter="operations">OPERATIONS &amp; OUTREACH</button>
+                </div>
+
+                <button class="team-tool-btn" id="open-photo-tool-btn">
+                    <span>📷</span> TEST / PREVIEW YOUR PHOTOS
+                </button>
+            </div>
+
+            <!-- Team Cards Grid (All 9 Members) -->
+            <div class="team-grid">
+
+                <!-- 01 — Ahmed Damda -->
+                <article class="member-card member-damda reveal" data-category="leadership"
+                    data-member-id="ahmed-damda">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/ahmed-damda.jpg"
+                            onerror="this.src='../images/Ahmad DF.jpeg'" alt="Ahmed Damda - Team Captain">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">LEADERSHIP</span>
+                        <span class="member-id">TC-01</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">01 — AHMED DAMDA</h3>
+                        <div class="member-role">TEAM CAPTAIN</div>
+                        <p class="member-bio">
+                            Leads the team from vision to execution, bringing together technical development, strategy,
+                            and teamwork while keeping everyone focused on a shared goal throughout the competition.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-01 CAPTAIN]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 02 — Ahmed Akrami -->
+                <article class="member-card member-akrami reveal" data-category="operations"
+                    data-member-id="ahmed-akrami">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/ahmed-akrami.jpg"
+                            onerror="this.src='../images/Ahmad Akrami.jpeg'" alt="Ahmed Akrami - General Support">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">SUPPORT</span>
+                        <span class="member-id">TC-02</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">02 — AHMED AKRAMI</h3>
+                        <div class="member-role">GENERAL SUPPORT MEMBER</div>
+                        <p class="member-bio">
+                            Supports the team across multiple areas, stepping in wherever needed to keep development,
+                            preparation, and competition operations running smoothly.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-02 SUPPORT]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 03 — Ahmed Zihaf -->
+                <article class="member-card member-zihaf reveal" data-category="operations"
+                    data-member-id="ahmed-zihaf">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/ahmed-zihaf.jpg"
+                            onerror="this.src='../images/Ahmed Zihaf.jpeg'" alt="Ahmed Zihaf - Community Outreach">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">OUTREACH</span>
+                        <span class="member-id">TC-03</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">03 — AHMED ZIHAF</h3>
+                        <div class="member-role">COMMUNITY OUTREACH MEMBER</div>
+                        <p class="member-bio">
+                            Builds connections between the team and its community, creating opportunities to share
+                            TORQUE CREW’s work, inspire others, and grow a stronger robotics ecosystem.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-03 OUTREACH]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 04 — Dibaan SB -->
+                <article class="member-card member-dibaan reveal" data-category="software" data-member-id="dibaan-sb">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/dibaan-sb.jpg"
+                            onerror="this.src='../images/Dibaan SB.jpeg'" alt="Dibaan SB - Programming Lead">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">SOFTWARE &amp; AI</span>
+                        <span class="member-id">TC-04</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">04 — DIBAAN SB</h3>
+                        <div class="member-role">PROGRAMMING LEAD</div>
+                        <p class="member-bio">
+                            Leads the software and programming systems behind the robot, developing reliable logic and
+                            controls that turn engineering concepts into precise, responsive performance.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-04 SOFTWARE]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 05 — Shiham -->
+                <article class="member-card member-shiham reveal" data-category="engineering" data-member-id="shiham">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/shiham.jpg"
+                            onerror="this.src='../images/Shiham.jpeg'" alt="Shiham - Electrical Lead">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">ELECTRICAL</span>
+                        <span class="member-id">TC-05</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">05 — SHIHAM</h3>
+                        <div class="member-role">ELECTRICAL LEAD</div>
+                        <p class="member-bio">
+                            Oversees the electrical systems that power and connect the machine, ensuring reliable
+                            integration between sensors, actuators, control systems, and the robot’s core hardware.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-05 ELECTRICAL]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 06 — Shammas -->
+                <article class="member-card member-shammas reveal" data-category="engineering" data-member-id="shammas">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/shammas.jpg"
+                            onerror="this.src='../images/Shammas.jpeg'" alt="Shammas - Mechanical Lead">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">MECHANICAL</span>
+                        <span class="member-id">TC-06</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">06 — SHAMMAS</h3>
+                        <div class="member-role">MECHANICAL LEAD</div>
+                        <p class="member-bio">
+                            Leads the mechanical development of the robot, transforming concepts into robust physical
+                            systems while ensuring every component works together with precision and reliability.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-06 MECHANICAL]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 07 — Quaid -->
+                <article class="member-card member-quaid reveal" data-category="operations" data-member-id="quaid">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/quaid.jpg" onerror="this.src='../images/Quaid.jpeg'"
+                            alt="Quaid - Documentation Head">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">DOCUMENTATION</span>
+                        <span class="member-id">TC-07</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">07 — QUAID</h3>
+                        <div class="member-role">DOCUMENTATION HEAD</div>
+                        <p class="member-bio">
+                            Captures the team’s technical journey and development process, turning ideas, decisions, and
+                            progress into clear documentation that reflects the work behind the machine.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                                <a href="#" class="social-icon" title="GitHub">gh</a>
+                                <a href="#" class="social-icon" title="Email">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-07 DOCUMENTATION]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 08 — Mohammed Hussain -->
+                <article class="member-card member-hussain reveal" data-category="operations"
+                    data-member-id="mohammed-hussain">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/mohammed-hussain.jpg"
+                            onerror="this.src='../images/Moammed Hussain.jpeg'"
+                            alt="Mohammed Hussain - Social Media Manager">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">SOCIAL MEDIA</span>
+                        <span class="member-id">TC-08</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">08 — MOHAMMED HUSSAIN</h3>
+                        <div class="member-role">SOCIAL MEDIA MANAGER</div>
+                        <p class="member-bio">
+                            Brings TORQUE CREW’s work beyond the workshop, shaping its digital presence and capturing
+                            the people, progress, and moments that define the journey.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                                    target="_blank" rel="noopener" class="social-icon" title="Instagram">ig</a>
+                                <a href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank"
+                                    rel="noopener" class="social-icon" title="YouTube">yt</a>
+                                <a href="#" class="social-icon" title="Contact">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-08 SOCIAL]</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 09 — Nubaid -->
+                <article class="member-card member-nubaid reveal" data-category="engineering" data-member-id="nubaid">
+                    <div class="member-photo-frame">
+                        <img class="member-img" src="../assets/team/nubaid.png"
+                            onerror="this.src='../images/Nubaid.PNG'"
+                            alt="Nubaid - Drive Team &amp; Robotics Specialist">
+                        <div class="photo-cyber-overlay"></div>
+                        <span class="member-badge">CREW</span>
+                        <span class="member-id">TC-09</span>
+                    </div>
+                    <div class="member-body">
+                        <h3 class="member-name">09 — NUBAID</h3>
+                        <div class="member-role">DRIVE TEAM &amp; ROBOTICS SPECIALIST</div>
+                        <p class="member-bio">
+                            Dedicated robotics specialist and drive team operator contributing to mechanical
+                            fabrication, swift match turnaround, and autonomous field maneuvers.
+                        </p>
+                        <div class="member-footer">
+                            <div class="member-socials">
+                                <a href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                                    target="_blank" rel="noopener" class="social-icon" title="Instagram">
+                                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank"
+                                    rel="noopener" class="social-icon" title="YouTube">
+                                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                        </path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon" title="Contact">✉</a>
+                            </div>
+                            <span class="replace-hint">[TC-09 SPECIALIST]</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+     SECTION 03: BUILDS & CORE CONCEPTS
+     ========================================================================== -->
+    <section class="section" id="builds">
+        <div class="wrap">
+            <div class="head reveal">
+                <div>
+                    <div class="kicker">03 // BUILDS &amp; SYSTEMS</div>
+                    <h2>Built Together.<br><span class="red">Driven Together.</span></h2>
+                </div>
+                <p>
+                    HyperDrive isn't only about a robot. Mechanical design, fast driving, and creative iteration combine
+                    when the match clock starts ticking.
+                </p>
+            </div>
+
+            <div class="cards">
+                <article class="card tilt reveal">
+                    <img src="../assets/robot.svg" alt="Robot Concept Blueprint">
+                    <div class="cardbody">
+                        <small>01 // HARDWARE</small>
+                        <h3>Build the Machine.</h3>
+                        <p>Every plate, bracket, and pulley is engineered for extreme load tolerances and instant
+                            field-swappability.</p>
+                    </div>
+                </article>
+
+                <article class="card tilt reveal">
+                    <img src="../assets/car.svg" alt="Mobility System Demo">
+                    <div class="cardbody">
+                        <small>02 // MOBILITY</small>
+                        <h3>Control the Motion.</h3>
+                        <p>High-torque swerve modules deliver instantaneous acceleration, zero-turning-radius pivots,
+                            and drift recovery.</p>
+                    </div>
+                </article>
+
+                <article class="card tilt reveal">
+                    <img src="../assets/bike.svg" alt="Future Concepts Demo">
+                    <div class="cardbody">
+                        <small>03 // INNOVATION</small>
+                        <h3>Push the Idea.</h3>
+                        <p>Our workshop is where competitive robotics, future mobility experiments, and crazy concepts
+                            become physical reality.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+     SECTION 04: INTERACTIVE ROBOT TECH SPECS EXPLORER
+     ========================================================================== -->
+    <section class="section" id="specs">
+        <div class="wrap">
+            <div class="head reveal">
+                <div>
+                    <div class="kicker">04 // SUBSYSTEM TELEMETRY</div>
+                    <h2>Inside the TC-01.<br><span class="red">Tech Specs Breakdown.</span></h2>
+                </div>
+                <p>
+                    Click between the robot's subsystems to inspect telemetry, component specs, and structural
+                    capabilities.
+                </p>
+            </div>
+
+            <div class="specs-container reveal">
+                <!-- Tabs -->
+                <div class="specs-nav">
+                    <button class="spec-tab-btn active" data-tab="swerve">
+                        <i></i> 01 / SWERVE CHASSIS
+                    </button>
+                    <button class="spec-tab-btn" data-tab="intake">
+                        <i></i> 02 / ROLLER INTAKE
+                    </button>
+                    <button class="spec-tab-btn" data-tab="vision">
+                        <i></i> 03 / VISION &amp; AI
+                    </button>
+                    <button class="spec-tab-btn" data-tab="climber">
+                        <i></i> 04 / SPACE CLIMBER
+                    </button>
+                </div>
+
+                <!-- Spec Display Panels -->
+                <div class="specs-display">
+
+                    <!-- Panel 1: Swerve -->
+                    <div class="spec-panel active" id="tab-swerve">
+                        <span class="spec-cat">DRIVETRAIN &amp; PROPULSION</span>
+                        <h3>INDEPENDENT 4-MODULE SWERVE</h3>
+                        <p class="spec-desc">
+                            Equipped with 4 custom-machined swerve modules utilizing dual brushless motors per wheel
+                            (one for drive, one for azimuth steering). Enables true holonomic omnidirectional vectoring
+                            on the 12×12 ft competition field.
+                        </p>
+                        <div class="spec-metrics">
+                            <div class="metric-box">
+                                <strong>16.4 FT/S</strong>
+                                <span>MAX SPRINT SPEED</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>4× BRUSHLESS</strong>
+                                <span>HIGH-TORQUE MOTORS</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>0.18 SEC</strong>
+                                <span>360° AZIMUTH ROTATION</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Intake -->
+                    <div class="spec-panel" id="tab-intake">
+                        <span class="spec-cat">MANIPULATOR &amp; SCORING</span>
+                        <h3>HIGH-COMPRESSION ROLLER INTAKE</h3>
+                        <p class="spec-desc">
+                            Features custom 45A durometer compliant silicone wheels with an active centrifugal indexer.
+                            Ingests COREs from any approach angle and prevents jams with automatic current-spike
+                            reversal.
+                        </p>
+                        <div class="spec-metrics">
+                            <div class="metric-box">
+                                <strong>0.32 SEC</strong>
+                                <span>INTAKE CYCLE TIME</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>3× CORES</strong>
+                                <span>MAX CAPACITY BUFFER</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>4,500 RPM</strong>
+                                <span>FEED WHEEL SPEED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Vision -->
+                    <div class="spec-panel" id="tab-vision">
+                        <span class="spec-cat">AUTONOMOUS &amp; SENSORS</span>
+                        <h3>DUAL APRILTAG STEREO VISION</h3>
+                        <p class="spec-desc">
+                            Dual monochrome global-shutter cameras track competition field tags with sub-centimeter
+                            accuracy. Integrated 6-DOF IMU fuses wheel odometry and optical flow into a continuous state
+                            estimator.
+                        </p>
+                        <div class="spec-metrics">
+                            <div class="metric-box">
+                                <strong>90 FPS</strong>
+                                <span>DETECTION REFRESH</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>±0.5 CM</strong>
+                                <span>ODOMETRY ACCURACY</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>30.0 SEC</strong>
+                                <span>AUTONOMOUS PRE-ROUTINE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Climber -->
+                    <div class="spec-panel" id="tab-climber">
+                        <span class="spec-cat">END GAME &amp; LEVEL UP</span>
+                        <h3>DUAL TELESCOPING WINCH RIG</h3>
+                        <p class="spec-desc">
+                            Multi-stage carbon-fiber tubes powered by a constant-force spring and high-speed winch.
+                            Deploys at T-minus 30 seconds to lock onto the Space Station rung with mechanical
+                            anti-backdrive ratchets.
+                        </p>
+                        <div class="spec-metrics">
+                            <div class="metric-box">
+                                <strong>1.8 SEC</strong>
+                                <span>DEPLOYMENT TIME</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>180 LBF</strong>
+                                <span>WINCH LIFT CAPACITY</span>
+                            </div>
+                            <div class="metric-box">
+                                <strong>LEVEL 3</strong>
+                                <span>MAX ALLIANCE HANG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+    <!-- ==========================================================================
+     SECTION 05: OUR PROCESS / JOURNEY
+     ========================================================================== -->
+    <div class="wrap">
+        <div class="head reveal">
+            <div>
+                <div class="kicker">05 // OUR PROCESS</div>
+                <h2>Idea → Robot<br><span class="red">→ Championship.</span></h2>
+            </div>
+            <p>Every championship build is a loop: imagine, engineer, test, fail, iterate, and conquer.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="step reveal">
+                <b>01 / DESIGN &amp; CAD</b>
+                <h3>Imagine</h3>
+                <p>Rapid conceptual sketches, CAD stress analysis, and structural kinematics simulations.</p>
+            </div>
+            <div class="step reveal">
+                <b>02 / FABRICATION</b>
+                <h3>Engineer</h3>
+                <p>Turn raw aluminum and electronics into a high-rigidity physical chassis and swerve system.</p>
+            </div>
+            <div class="step reveal">
+                <b>03 / TEST &amp; CODE</b>
+                <h3>Iterate</h3>
+                <p>Stress test intake mechanisms, fine-tune PID loops, and push autonomous code to sub-centimeter
+                    precision.</p>
+            </div>
+            <div class="step reveal">
+                <b>04 / COMPETE</b>
+                <h3>Conquer</h3>
+                <p>Take the field, coordinate alliances, execute driver reflexes, and claim the trophy.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ==========================================================================
+     SECTION 06: MANIFESTO, CONNECT & MEET THE CREW
+     ========================================================================== -->
+    <section class="manifesto" id="manifesto">
+        <div class="wrap reveal">
+            <div class="kicker" style="justify-content: center;">06 // THE MISSION &amp; COMMUNITY</div>
+            <h2>BUILD BOLD.<br><span class="redline">DRIVE HARD.</span><br>GO FURTHER.</h2>
+            <p style="max-width: 580px; margin: 0 auto 20px; color: var(--muted); font-size: 16px;">
+                Ready to meet the crew, mentor our students, or sponsor our championship drive? Connect with Torque Crew
+                today across our official channels.
+            </p>
+
+            <!-- Official Social Channel Cards -->
+            <div class="social-connect-grid">
+                <a href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                    target="_blank" rel="noopener" class="social-channel-card insta-card">
+                    <div class="social-card-left">
+                        <div class="social-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                        <div class="social-card-meta">
+                            <h4>@TORQUECREW.8</h4>
+                            <span>OFFICIAL INSTAGRAM</span>
+                        </div>
+                    </div>
+                    <div class="social-card-action">
+                        FOLLOW &nearr;
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank" rel="noopener"
+                    class="social-channel-card yt-card">
+                    <div class="social-card-left">
+                        <div class="social-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </div>
+                        <div class="social-card-meta">
+                            <h4>@TORQUECREW.8</h4>
+                            <span>OFFICIAL YOUTUBE</span>
+                        </div>
+                    </div>
+                    <div class="social-card-action">
+                        SUBSCRIBE &nearr;
+                    </div>
+                </a>
+            </div>
+
+            <a class="cta meet-the-crew-btn" href="#team" id="join-modal-btn">MEET THE CREW &rarr;</a>
+        </div>
+    </section>
+    <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+    <footer>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="../assets/torque-icon.jpg" alt="Torque Crew"
+                style="width: 24px; height: 24px; border-radius: 4px;">
+            <span>&copy; 2026 TORQUE CREW // ONE CREW. ONE DRIVE. ONE GOAL.</span>
+        </div>
+
+        <div class="footer-social-links">
+            <a class="insta" href="https://www.instagram.com/torquecrew.8?stkn=MTZoaGQ4MTNocDdoYg%3D%3D&utm_source=qr"
+                target="_blank" rel="noopener" title="Follow Torque Crew on Instagram">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a class="yt" href="https://youtube.com/@torquecrew.8?si=PG98vBV50cttuZPa" target="_blank" rel="noopener"
+                title="Subscribe to Torque Crew on YouTube">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                    </path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </a>
+        </div>
+
+        <div class="foot-links">
+            <a href="#about">About</a>
+            <a href="#team" class="meet-the-crew-btn">Meet The Crew</a>
+            <a href="#specs">Specs</a>
+            <a href="#journey">Journey</a>
+            <a href="#" id="foot-replay-btn">&#9654; Replay Intro</a>
+            <a href="#start">&uarr; Top</a>
+        </div>
+    </footer>
+    <!-- ==========================================================================
+     PHOTO PREVIEW HELPER MODAL
+     ========================================================================== -->
+    <div class="modal-backdrop" id="photo-modal">
+        <div class="modal-box">
+            <button class="modal-close" id="modal-close-btn">✕</button>
+            <div class="kicker">PHOTO HELPER TOOL</div>
+            <h3>TEST / PREVIEW TEAM PHOTOS</h3>
+            <p>
+                Select a team member slot and choose an image from your computer to preview how it fits live on the
+                card!
+            </p>
+
+            <div class="modal-field">
+                <label>SELECT TEAM MEMBER CARD TO PREVIEW:</label>
+                <select class="modal-select" id="preview-member-select">
+                    <option value="ahmed-damda">01 — AHMED DAMDA // TEAM CAPTAIN (TC-01)</option>
+                    <option value="ahmed-akrami">02 — AHMED AKRAMI // GENERAL SUPPORT (TC-02)</option>
+                    <option value="ahmed-zihaf">03 — AHMED ZIHAF // COMMUNITY OUTREACH (TC-03)</option>
+                    <option value="dibaan-sb">04 — DIBAAN SB // PROGRAMMING LEAD (TC-04)</option>
+                    <option value="shiham">05 — SHIHAM // ELECTRICAL LEAD (TC-05)</option>
+                    <option value="shammas">06 — SHAMMAS // MECHANICAL LEAD (TC-06)</option>
+                    <option value="quaid">07 — QUAID // DOCUMENTATION HEAD (TC-07)</option>
+                    <option value="mohammed-hussain">08 — MOHAMMED HUSSAIN // SOCIAL MEDIA (TC-08)</option>
+                    <option value="nubaid">09 — NUBAID // DRIVE TEAM &amp; ROBOTICS SPECIALIST (TC-09)</option>
+                    <option value="tc-09">09 — CREW MEMBER // BACKUP SLOT (TC-09)</option>
+                </select>
+            </div>
+
+            <div class="modal-field">
+                <label>UPLOAD PHOTO TO PREVIEW (JPG / PNG / WEBP):</label>
+                <div class="modal-file-drop" id="modal-dropzone">
+                    <div style="font-size: 28px; margin-bottom: 8px;">📁</div>
+                    <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">Click to Choose Photo or Drag &amp;
+                        Drop</div>
+                    <div style="font-size: 11px; color: #888;">Live preview updates instantly on the page</div>
+                    <input type="file" id="modal-file-input" accept="image/*" style="display:none;">
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line-light); padding: 14px; border-radius: 10px; font-family: var(--font-mono); font-size: 11px; color: #aaa;">
+                <strong style="color:var(--red);">PERMANENT SAVING INSTRUCTION:</strong><br>
+                To keep your photos permanently, save your photo files into the <code
+                    style="color:#fff;">assets/team/</code> folder and update the image tags in <code
+                    style="color:#fff;">index.html</code>.
+            </div>
+        </div>
+    </div>
+    <!-- External Modular JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
