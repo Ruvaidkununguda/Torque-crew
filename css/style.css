@@ -177,8 +177,8 @@
 
         #intro-vid {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             opacity: 0.94;
             filter: contrast(1.08) brightness(0.96);
         }
@@ -2377,10 +2377,12 @@
                 outline: 2px solid transparent;
                 box-shadow: 0 0 0 rgba(242, 11, 24, 0);
             }
+
             30% {
                 outline: 2px solid var(--red);
                 box-shadow: 0 0 60px rgba(242, 11, 24, 0.35);
             }
+
             100% {
                 outline: 2px solid transparent;
                 box-shadow: 0 0 0 rgba(242, 11, 24, 0);
@@ -2439,20 +2441,25 @@
             .wrap {
                 width: 92%;
             }
+
             .hero {
                 padding: 120px 5% 70px;
             }
+
             .hero-inner {
                 gap: 36px;
             }
+
             .cards {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 16px;
             }
+
             .team-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 18px;
             }
+
             .milestones-bar {
                 gap: 12px;
             }
@@ -2464,72 +2471,84 @@
                 height: 68px;
                 padding: 0 4%;
             }
+
             .nav-center,
             .nav-right {
                 display: none !important;
             }
+
             .nav-mobile-actions,
             .mobile-menu-toggle {
                 display: flex !important;
             }
-            
+
             .hero {
                 min-height: auto;
                 padding: 105px 4% 60px;
             }
+
             .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
             }
+
             .hero-copy {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
+
             .logo-large {
                 margin: 20px auto 10px;
                 max-width: 440px;
             }
+
             .sub {
                 margin: 16px auto 0;
                 max-width: 540px;
             }
+
             .hero-buttons {
                 justify-content: center;
             }
-            
+
             .robot-stage {
                 height: 380px;
                 order: -1;
             }
+
             .core-pedestal {
                 width: min(320px, 75vw);
                 height: min(320px, 75vw);
                 bottom: 15px;
             }
+
             .vertical-logo-rotator {
                 width: min(190px, 52vw);
             }
-            
+
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
+
             .about-card {
                 padding: 30px;
             }
+
             .milestones-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .specs-container {
                 grid-template-columns: 1fr;
             }
+
             .specs-nav {
                 border-right: none;
                 border-bottom: 1px solid var(--line);
@@ -2539,31 +2558,35 @@
                 gap: 10px;
                 -webkit-overflow-scrolling: touch;
             }
+
             .spec-tab-btn {
                 flex-shrink: 0;
                 padding: 12px 16px;
                 font-size: 13px;
                 white-space: nowrap;
             }
+
             .specs-display {
                 padding: 30px 24px;
             }
-            
+
             .gamegrid {
                 grid-template-columns: 1fr;
             }
+
             .game img {
                 min-height: 260px;
                 max-height: 380px;
             }
+
             .gamecopy {
                 padding: 32px 26px;
             }
-            
+
             .timeline {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .cards {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -2574,26 +2597,30 @@
             .section {
                 padding: 80px 0;
             }
+
             .head {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 14px;
                 margin-bottom: 35px;
             }
+
             .head p {
                 max-width: 100%;
                 margin-top: 6px;
             }
-            
+
             /* Intro Gate HUD on mobile */
             #intro-gate {
                 padding: 16px 18px;
             }
+
             .gate-hud-top {
                 flex-wrap: wrap;
                 gap: 12px;
                 justify-content: space-between;
             }
+
             .gate-telemetry {
                 font-size: 10px;
                 padding: 6px 12px;
@@ -2602,34 +2629,40 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
+
             .gate-ctrls {
                 gap: 8px;
             }
+
             .gate-icon-btn {
                 padding: 6px 12px;
                 font-size: 10px;
             }
+
             .gate-actions-row {
                 flex-direction: column-reverse;
                 align-items: stretch;
                 gap: 12px;
             }
+
             .enter-hyperdrive-btn {
                 width: 100%;
                 justify-content: center;
                 padding: 14px 20px;
             }
+
             .gate-hint {
                 text-align: center;
                 font-size: 10px;
             }
-            
+
             /* Team Filter Bar */
             .team-filter-bar {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 14px;
             }
+
             .filter-btns {
                 display: flex;
                 overflow-x: auto;
@@ -2638,52 +2671,60 @@
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: thin;
             }
+
             .filter-btn {
                 flex-shrink: 0;
                 white-space: nowrap;
                 padding: 8px 14px;
                 font-size: 10px;
             }
+
             .team-tool-btn {
                 justify-content: center;
                 width: 100%;
                 padding: 10px 14px;
             }
-            
+
             /* Simulator */
             .sim-box {
                 padding: 24px 18px;
             }
+
             .sim-board {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
+
             .sim-metric {
                 padding: 14px 10px;
             }
+
             .sim-metric .val {
                 font-size: 28px;
             }
+
             .sim-controls {
                 flex-wrap: wrap;
                 width: 100%;
             }
+
             .sim-controls .cta {
                 flex: 1;
                 justify-content: center;
                 text-align: center;
             }
-            
+
             .social-connect-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             footer {
                 flex-direction: column;
                 gap: 20px;
                 text-align: center;
                 padding: 35px 4%;
             }
+
             .foot-links {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -2696,46 +2737,55 @@
             .team-grid {
                 grid-template-columns: 1fr;
             }
+
             .cards {
                 grid-template-columns: 1fr;
             }
+
             .pillars {
                 grid-template-columns: 1fr;
             }
+
             .timeline {
                 grid-template-columns: 1fr;
             }
+
             .spec-metrics {
                 grid-template-columns: 1fr;
             }
+
             .stats {
                 grid-template-columns: 1fr;
             }
-            
+
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
             }
+
             .hero-buttons .cta,
             .hero-buttons .cta-outline {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .milestones-bar {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
+
             .milestone-item {
                 padding: 18px 12px;
             }
+
             .milestone-num {
                 font-size: 32px;
             }
+
             .milestone-label {
                 font-size: 9px;
             }
-            
+
             .modal-box {
                 padding: 24px 18px;
             }
@@ -2746,29 +2796,32 @@
             .brand span {
                 font-size: 13px;
             }
+
             .brand img {
                 width: 32px;
                 height: 32px;
             }
-            
+
             .gate-telemetry {
                 display: none;
             }
+
             .gate-hud-top {
                 justify-content: flex-end;
             }
-            
+
             .sim-board {
                 grid-template-columns: 1fr;
             }
-            
+
             .member-body {
                 padding: 18px;
             }
+
             .member-name {
                 font-size: 19px;
             }
-            
+
             .milestones-bar {
                 grid-template-columns: 1fr;
             }
